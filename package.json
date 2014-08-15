@@ -1,0 +1,29 @@
+{
+  "name": "manray",
+  "version": "0.0.0",
+  "description": "A rendering service for fabric.js canvases",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --spec-reporter"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mtharrison/manray.git"
+  },
+  "keywords": [
+    "fabric",
+    "fabric.js",
+    "rendering"
+  ],
+  "author": "Matt Harrison <hi@matt-harrison.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mtharrison/manray/issues"
+  },
+  "homepage": "https://github.com/mtharrison/manray",
+  "dependencies": {
+    "handlebars": "^2.0.0-alpha.4",
+    "hapi": "^6.5.1",
+    "phantom-render-stream": "1.0.3"
+  }
+}
