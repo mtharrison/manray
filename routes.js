@@ -6,7 +6,7 @@ var fs = require('fs');
 var path = require('path');
 var Utils = require('./utils');
 var template = Utils.getTemplate();
-const HOST = "http://manray.vpplatform.com";
+const HOST = "YOUR HOST HERE";
 
 module.exports = function(server) {
   return [{
