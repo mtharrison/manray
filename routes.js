@@ -20,8 +20,6 @@ module.exports = function(server) {
 
 			Utils.makeTempFile(html, function(fn){
 				var htmlView = "http://127.0.0.1/views/" + path.basename(fn);
-
-				console.log();
 				render(htmlView, {
 					width:  request.payload.width  || 1280,
 					height: request.payload.height || 960,
@@ -29,7 +27,7 @@ module.exports = function(server) {
 				.on('finish', function(){
 					reply(HOST + '/images/' +  path.basename(name));
 
-					//fs.unlink(fn, function(){});
+					fs.unlink(fn, function(){});
 				});
 			});
 
