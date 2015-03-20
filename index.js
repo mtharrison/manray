@@ -15,7 +15,7 @@ try {
 }
 
 var server = new Hapi.Server();
-server.connection({ port: 5000, routes: {cors: true} })
+server.connection({ port: 5555, routes: {cors: true} })
 
 server.route(require('./routes'));
 
