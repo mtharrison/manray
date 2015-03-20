@@ -41,10 +41,12 @@ module.exports = [{
 
             Utils.writeTempTemplateFile(html, function(filename) {
 
+                var uri = require('os').hostname() === 'ip-172-30-2-133' ? 'http://54.172.33.249:5555' : request.server.info.uri;
+
                 var baseName  = Path.basename(filename, '.html');
-                var viewUrl   = request.server.info.uri + '/views/' +  baseName + '.html';
+                var viewUrl   = uri + '/views/' +  baseName + '.html';
                 var imagePath = Path.join(__dirname, 'images') + '/' + baseName + '.png';
-                var imageUrl  = request.server.info.uri + '/images/' +  baseName + '.png';
+                var imageUrl  = uri + '/images/' +  baseName + '.png';
 
                 internals.render(viewUrl, {
                     width: request.payload.width || 1280,
