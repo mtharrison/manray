@@ -4,13 +4,23 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <script src="/public/fabric.js"></script>
-  <style>body{margin: 0;}</style>
+  <style>
+    body{margin: 0;}
+    #container {
+      position: relative;
+    }
+    .canvas-container {
+      position: absolute !important;
+    }
+  </style>
 </head>
 <body>
 
-  {{#each canvases}}
-    <canvas id="{{id}}" width="{{../width}}" height="{{../height}}"></canvas>
-  {{/each}}
+  <div id="container">
+    {{#each canvases}}
+      <canvas id="{{id}}" width="{{../width}}" height="{{../height}}"></canvas>
+    {{/each}}
+  </div>
 
   <script>
 
