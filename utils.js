@@ -1,28 +1,35 @@
-var hbs = require('handlebars');
-var crypto = require('crypto');
-var fs = require('fs');
+var Hbs = require('handlebars');
+var Crypto = require('crypto');
+var Path = require('path');
+var Fs = require('fs');
+var Uuid = require('node-uuid');
 
 var Utils = {};
 
-Utils.getRandomHash = function() {
-  return crypto.randomBytes(20).toString('hex');
-};
+Utils.writeTempTemplateFile = function(contents, callback) {
 
-Utils.makeTempFile = function(content, callback) {
-  var fn = __dirname + '/tmp/' + Utils.getRandomHash() + '.html';
+    var uuid = Uuid.v4();
+    var filename = Path.resolve(Path.join(__dirname, '/tmp/', uuid)) + '.html';
 
-  fs.writeFile(fn, content, function(err) {
-    if (err) throw err;
-    callback(fn);
-  })
+    Fs.writeFile(filename, contents, function(err) {
+
+        if (err) {
+            throw err;
+        }
+
+        callback(filename);
+    })
 }
 
 Utils.getTemplate = function() {
-  return hbs.compile(fs.readFileSync(__dirname + '/public/index.hbs').toString());
+
+    return Hbs.compile(Fs.readFileSync(Path.join(__dirname, '/public/index.hbs')).toString());
 };
 
 Utils.getRandomImageName = function() {
-  return __dirname + '/images/' + Utils.getRandomHash() + '.png';
+
+    return __dirname + '/images/' + Uuid.v4() + '.png';
 }
+
 
 module.exports = Utils;

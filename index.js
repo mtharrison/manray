@@ -1,9 +1,10 @@
 var Hapi = require('hapi');
 
-var server = new Hapi.Server(80);
+var server = new Hapi.Server();
+server.connection({ port: 4000 })
 
-server.route(require('./routes')(server));
+server.route(require('./routes'));
 
-server.start(function() {
+server.start(function () {
   console.log('Server running at:', server.info.uri);
-})
+});

@@ -22,8 +22,9 @@
   },
   "homepage": "https://github.com/mtharrison/manray",
   "dependencies": {
-    "handlebars": "^2.0.0-alpha.4",
-    "hapi": "^6.5.1",
+    "handlebars": "^3.0.0",
+    "hapi": "^8.4.0",
+    "node-uuid": "^1.4.3",
     "phantom-render-stream": "1.0.3"
   }
 }
