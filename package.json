@@ -24,6 +24,7 @@
   "dependencies": {
     "handlebars": "^3.0.0",
     "hapi": "^8.4.0",
+    "joi": "^6.0.8",
     "node-uuid": "^1.4.3",
     "phantom-render-stream": "1.0.3"
   }

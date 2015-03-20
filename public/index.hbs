@@ -8,12 +8,17 @@
 </head>
 <body>
 
-  <canvas id="canvas" width="960" height="720"></canvas>
+  {{#each canvases}}
+    <canvas id="{{id}}" width="{{../width}}" height="{{../height}}"></canvas>
+  {{/each}}
 
   <script>
-    var data = {{{data}}};
-    var canvas = new fabric.Canvas('canvas', {width: data.width, height: data.height});
-    canvas.loadFromJSON(data);
+
+  {{#each canvases}}
+    var {{id}} = new fabric.Canvas('{{id}}', {width: {{../width}}, height: {{../height}} });
+    {{id}}.loadFromJSON({{{data}}});
+  {{/each}}
+    
   </script>
 
 </body>
