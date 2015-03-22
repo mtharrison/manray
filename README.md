@@ -12,33 +12,33 @@ This is a simple way to sidestep that restriction by having Manray do the render
 
 ###How?
 
-var Manray = require('manray');
+    var Manray = require('manray');
 
-var canvasData = {canvases:[{...}]}; // canvas data from fabric.Canvas.prototype.toDatalessJSON()
+    var canvasData = {canvases:[{...}]}; // canvas data from fabric.Canvas.prototype.toDatalessJSON()
 
-var pool = new Manray.pool(5);       // Pool with 5 workers
+    var pool = new Manray.pool(5);       // Pool with 5 workers
 
-var stream = pool.render(canvasData, 
-    {  
-        output: 'base64'             // one of 'base64' (string) or 'binary' (buffer)
-    }
-);
+    var stream = pool.render(canvasData, 
+        {  
+            output: 'base64'             // one of 'base64' (string) or 'binary' (buffer)
+        }
+    );
 
 stream.pipe(toWherever);
 
 ###Don't want a stream? Use a callback instead.
 
-var Manray = require('manray');
+    var Manray = require('manray');
 
-var canvasData = {canvases:[{...}]}; // canvas data from fabric.Canvas.prototype.toDatalessJSON()
+    var canvasData = {canvases:[{...}]}; // canvas data from fabric.Canvas.prototype.toDatalessJSON()
 
-var pool = new Manray.pool(5);       // Pool with 5 workers
+    var pool = new Manray.pool(5);       // Pool with 5 workers
 
-var stream = pool.render(canvasData, 
-    {  
-        output: 'base64'             // one of 'base64' (string) or 'binary' (buffer)
-    },
-    function (buff) {
-    
-    }
-);
+    pool.render(canvasData, 
+        {  
+            output: 'base64'
+        },
+        function (buff) {
+        
+        }
+    );
