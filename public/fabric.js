@@ -15119,7 +15119,7 @@ fabric.util.object.extend(fabric.Object.prototype, /** @lends fabric.Object.prot
       this.originalState = { };
       this.callSuper('initialize');
 
-      this._calcBounds();
+      // this._calcBounds();
       this._updateObjectsCoords();
 
       if (options) {
