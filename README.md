@@ -1,8 +1,8 @@
 ![manray](http://mattharrison.s3.amazonaws.com/manray/logo.png) 
 #Manray
-###Fabric.js rendering as a service.
+###Streaming image renderer for fabric.js canvas JSON data
 
-A simple webservice written in Node.js. Post your canvas JSON from fabric to Manray and get back a URL to a rendered image.
+Takes your canvas JSON from fabric and returns a stream of image data from phantomjs
 
 ###Why?
 
@@ -12,12 +12,33 @@ This is a simple way to sidestep that restriction by having Manray do the render
 
 ###How?
 
-In your client side canvas script:
+var Manray = require('manray');
 
-	var canvas = new fabric.Canvas('canvas');
-	... 
-	... # Add some things to canvas
-	...
-	var json = canvas.toDatalessJSON();
-	
-Then you post that JSON to Manray who will create an HTML document with a canvas and restore that canvas using your json. Manray will then open the document in PhantomJS, take a shot and save it to disk, handing back to you in the original response a nice clean URL for you to use however you wish.
+var canvasData = {canvases:[{...}]}; // canvas data from fabric.Canvas.prototype.toDatalessJSON()
+
+var pool = new Manray.pool(5);       // Pool with 5 workers
+
+var stream = pool.render(canvasData, 
+    {  
+        output: 'base64'             // one of 'base64' (string) or 'binary' (buffer)
+    }
+);
+
+stream.pipe(toWherever);
+
+###Don't want a stream? Use a callback instead.
+
+var Manray = require('manray');
+
+var canvasData = {canvases:[{...}]}; // canvas data from fabric.Canvas.prototype.toDatalessJSON()
+
+var pool = new Manray.pool(5);       // Pool with 5 workers
+
+var stream = pool.render(canvasData, 
+    {  
+        output: 'base64'             // one of 'base64' (string) or 'binary' (buffer)
+    },
+    function (buff) {
+    
+    }
+);
