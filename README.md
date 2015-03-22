@@ -24,7 +24,7 @@ This is a simple way to sidestep that restriction by having Manray do the render
         }
     );
 
-stream.pipe(toWherever);
+    stream.pipe(toWherever);
 
 ###Don't want a stream? Use a callback instead.
 
