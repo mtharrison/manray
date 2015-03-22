@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <script src="/public/fabric.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.13/fabric.min.js"></script>
   <style>
     body{margin: 0;}
     #container {
@@ -27,6 +27,7 @@
   {{#each canvases}}
     var {{id}} = new fabric.Canvas('{{id}}', {width: {{../width}}, height: {{../height}} });
     {{id}}.loadFromJSON({{{data}}});
+    {{id}}.renderAll();
   {{/each}}
     
   </script>

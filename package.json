@@ -1,10 +1,10 @@
 {
   "name": "manray",
-  "version": "0.0.0",
-  "description": "A rendering service for fabric.js canvases",
+  "version": "0.1.0",
+  "description": "Renders fabric.js JSON canvas data and returns an image",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --spec-reporter"
+    "test": ""
   },
   "repository": {
     "type": "git",
@@ -22,10 +22,13 @@
   },
   "homepage": "https://github.com/mtharrison/manray",
   "dependencies": {
+    "base64-stream": "^0.1.2",
     "handlebars": "^3.0.0",
-    "hapi": "^8.4.0",
     "joi": "^6.0.8",
     "node-uuid": "^1.4.3",
-    "phantom-render-stream": "1.0.3"
+    "phantom-render-stream": "1.7.0"
+  },
+  "devDependencies": {
+    "picture-tube": "0.0.4"
   }
 }
